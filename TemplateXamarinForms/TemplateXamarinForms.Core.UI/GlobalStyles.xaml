@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TemplateXamarinForms.Core.UI.GlobalStyles">
+    <!--#region FONT FAMILY-->
+    <!--#endregion FONT FAMILY-->
+
+    <!--#region NUMBER VALUES-->
+     <!--#endregion IMAGES-->
+
+    <!--#region IMAGES-->
+    <!--#endregion IMAGES-->
+
+    <!--#region COLORS-->
+    <Color x:Key="Yellow">#F6A623</Color>
+    <!--#endregion COLORS-->
+
+    <!--#region STYLES-->
+    <Style x:Key="BaseLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{ StaticResource Yellow }" />
+    </Style>
+    <!--#endregion STYLES-->
+
+</ResourceDictionary>

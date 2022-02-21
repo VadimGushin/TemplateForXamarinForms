@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<basePage:BasePage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:customElements="clr-namespace:TemplateXamarinForms.Core.UI.Views.CustomElements;assembly=TemplateXamarinForms.Core.UI"
+    xmlns:converts="clr-namespace:TemplateXamarinForms.Services.Converters;assembly=TemplateXamarinForms.Services"
+    xmlns:effects="clr-namespace:TemplateXamarinForms.Core.UI.Effects;assembly=TemplateXamarinForms.Core.UI"
+    xmlns:viewModels="clr-namespace:TemplateXamarinForms.ViewModels.Navigation;assembly=TemplateXamarinForms.ViewModels"
+    x:TypeArguments="viewModels:FirstViewModel"
+    xmlns:basePage="clr-namespace:TemplateXamarinForms.Core.UI.BaseElements"
+    x:Class="TemplateXamarinForms.Core.UI.Pages.FirstPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converts:TemplateConverter x:Key="TemplateConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <!--If you will need to share content-->
+          
+            <!--#region Content -->
+            <customElements:CustomLabel x:Name="mainTextLbl" Text="{Binding HelloString}"
+                                        Style="{StaticResource BaseLabelStyle}"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center" />
+            <Label Text="Test test"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center">
+                <Label.Effects>
+                    <effects:TemplateEffect/>
+                </Label.Effects>
+            </Label>
+            <!--#endregion-->
+            
+            <!--#region Elements with commands -->
+            <Button 
+                Command="{Binding ChangeTextCommand}"
+                IsEnabled="{Binding Source={x:Reference mainTextLbl},
+                                    Path=Text.Length,
+                                    Converter={StaticResource TemplateConverter}}"
+                Text="Change Text"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center"/>
+
+            <Label Text="Change Text"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center"
+                TranslationY="20">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeTextCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+            <!--#endregion-->
+           
+        </StackLayout>
+    </ContentPage.Content>
+</basePage:BasePage>
